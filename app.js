@@ -4,11 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var readline = require('readline');
+require('dotenv').config();
+const { auth, requiresAuth } = require('express-openid-connect');
 
 var indexRouter = require('./routes/index');
 var processRouter = require('./routes/process');
 
 var app = express();
+
+app.use(
+	auth({
+		authRequired: false,
+		auth0Logout: true,
+		issuerBaseURL: process.env.ISSUER_BASE_URL,
+		baseURL: process.env.BASE_URL,
+		clientID: process.env.CLIENT_ID,
+		secret: process.env.SECRET
+	})
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
