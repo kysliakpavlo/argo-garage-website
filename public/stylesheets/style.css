@@ -16,16 +16,24 @@ p {
   float: left;
   height: 75px;
   width: 1000px;
-  background: #FF6633;
+  background: #4E4B5C;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+#header p {
+  color: white;
 }
 
 #navigation {
   float: left;
   height: 40px;
   width: 1000px;
-  background: #FFCC33;
+  background: #0B93C1;
+}
+
+#navigation p {
+  color: white;
 }
 
 #content {
@@ -36,18 +44,15 @@ p {
 
 #middlecolumn {
   float: left;
-  background: #FFFFFF;
   width: 700px;
 }
 
 #leftcolumn {
-  background: #33CCFF;
   width: 150px;
   float: left;
 }
 
 #rightcolumn {
-  background: #CC33FF;
   width: 150px;
   float: left;
 }
@@ -55,8 +60,12 @@ p {
 #footer {
   height: 40px;
   width: 1000px;
-  background: #33FF66;
+  background: #0B93C1;
   clear: both;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+#footer p {
+  color: white;
 }
