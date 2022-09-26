@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #F6F6F6;
 }
 
 p {
@@ -16,6 +17,8 @@ p {
   height: 75px;
   width: 1000px;
   background: #FF6633;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 #navigation {
@@ -26,6 +29,12 @@ p {
 }
 
 #content {
+  float: left;
+  background: #FFFFFF;
+  width: 1000px;
+}
+
+#middlecolumn {
   float: left;
   background: #FFFFFF;
   width: 700px;
@@ -48,4 +57,6 @@ p {
   width: 1000px;
   background: #33FF66;
   clear: both;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
