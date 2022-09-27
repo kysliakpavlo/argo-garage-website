@@ -3,10 +3,6 @@ body {
   background: #F6F6F6;
 }
 
-p {
-  padding: 10px;
-}
-
 #wrapper {
   margin: 0 auto;
   width: 1000px;
@@ -14,26 +10,14 @@ p {
 
 #header {
   float: left;
-  height: 75px;
   width: 1000px;
   background: #4E4B5C;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-#header p {
-  color: white;
 }
 
 #navigation {
   float: left;
-  height: 40px;
   width: 1000px;
   background: #0B93C1;
-}
-
-#navigation p {
-  color: white;
 }
 
 #content {
@@ -42,30 +26,8 @@ p {
   width: 1000px;
 }
 
-#middlecolumn {
-  float: left;
-  width: 700px;
-}
-
-#leftcolumn {
-  width: 150px;
-  float: left;
-}
-
-#rightcolumn {
-  width: 150px;
-  float: left;
-}
-
 #footer {
-  height: 40px;
+  float: left;
   width: 1000px;
   background: #0B93C1;
-  clear: both;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-#footer p {
-  color: white;
 }

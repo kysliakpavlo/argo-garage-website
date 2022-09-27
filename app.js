@@ -8,8 +8,6 @@ require('dotenv').config();
 const { auth, requiresAuth } = require('express-openid-connect');
 
 var indexRouter = require('./routes/index');
-var processRouter = require('./routes/process');
-var dashboardRouter = require('./routes/dashboard');
 
 var app = express();
 
@@ -35,8 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/XvAbfK56Twmmr3nb', processRouter);
-app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
