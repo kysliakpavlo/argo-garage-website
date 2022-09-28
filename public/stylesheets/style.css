@@ -5,29 +5,66 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  width: 1000px;
+  width: 800px;
 }
 
 #header {
   float: left;
-  width: 1000px;
+  width: 800px;
   background: #4E4B5C;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#header p {
+  margin-left: 20px;
+  font: 28px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #F6F6F6;
 }
 
 #navigation {
   float: left;
-  width: 1000px;
+  width: 800px;
   background: #0B93C1;
 }
 
 #content {
   float: left;
   background: #FFFFFF;
-  width: 1000px;
+  width: 800px;
 }
 
 #footer {
   float: left;
-  width: 1000px;
+  width: 800px;
   background: #0B93C1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+ul, p {
+  margin-left: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 10px 30px 10px 10px;
+  float: right;
+  color: white
+}
+
+nav ul li a {
+  padding: 10px 0px;
+  text-decoration: none; /* no underline */
+  color: white;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+  color: white;
+  text-decoration: underline;
 }
