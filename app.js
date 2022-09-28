@@ -42,6 +42,7 @@ app.use('/', indexRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/contact', contactRouter);
 app.use('/privacy-policy', privacyPolicyRouter);
+app.use('/privacy-policy.html', privacyPolicyRouter); // Deprecate after next release
 app.use('/user-policy', userPolicyRouter);
 app.use('/roadmap', roadmapRouter);
 app.use('/helpout', helpOutRouter);
