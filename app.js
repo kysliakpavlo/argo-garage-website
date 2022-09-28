@@ -7,8 +7,13 @@ var readline = require('readline');
 require('dotenv').config();
 const { auth, requiresAuth } = require('express-openid-connect');
 
-var indexRouter = require('./routes/index');
+var indexRouter	= require('./routes/index');
+var dashboardRouter = require('./routes/dashboard');
+var contactRouter = require('./routes/contact');
+var privacyPolicyRouter = require('./routes/privacy-policy');
+var userPolicyRouter = require('./routes/user-policy');
 var roadmapRouter = require('./routes/roadmap');
+var helpOutRouter = require('./routes/helpout');
 
 var app = express();
 
@@ -34,7 +39,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/dashboard', dashboardRouter);
+app.use('/contact', contactRouter);
+app.use('/privacy-policy', privacyPolicyRouter);
+app.use('/user-policy', userPolicyRouter);
 app.use('/roadmap', roadmapRouter);
+app.use('/helpout', helpOutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

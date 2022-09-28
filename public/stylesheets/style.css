@@ -11,7 +11,7 @@ body {
 #header {
   float: left;
   width: 800px;
-  background: #4E4B5C;
+  background: #0B93C1;;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -19,25 +19,26 @@ body {
 #header p {
   margin-left: 20px;
   font: 28px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #F6F6F6;
+  color: white;
 }
 
 #navigation {
   float: left;
   width: 800px;
-  background: #0B93C1;
+  background: #5D6D7E
 }
 
 #content {
   float: left;
   background: #FFFFFF;
   width: 800px;
+  min-height: 600px;
 }
 
 #footer {
   float: left;
   width: 800px;
-  background: #0B93C1;
+  background: #5D6D7E;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -48,23 +49,29 @@ ul, p {
 
 nav ul {
   list-style-type: none;
-  margin: 0 0 0 20px;
+  margin: 0 20px 0 0;
   padding: 0;
 }
 
 nav ul li {
-  margin: 10px 30px 10px 10px;
-  float: right;
+  margin: 10px 30px 10px 20px;
+  float: left;
   color: white
 }
 
 nav ul li a {
-  padding: 10px 0px;
-  text-decoration: none; /* no underline */
   color: white;
 }
 
 nav ul li a:hover, nav ul li a:focus {
   color: white;
+}
+
+a {
+  text-decoration: none; /* no underline */
+  color: #0B93C1;
+}
+
+a:hover, a:focus {
   text-decoration: underline;
 }
