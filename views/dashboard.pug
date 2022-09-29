@@ -1,4 +1,13 @@
 extends layout
 
+block styles 
+  link(rel='stylesheet', href='/stylesheets/dashboard.css')
+
 block content
-  p Dashboard
+  #dashnav    
+    nav 
+      ul 
+        li
+          a(href='/logout') Logout
+  #dashcontent 
+    p Dashboard Content 

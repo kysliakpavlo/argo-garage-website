@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/dashboard', dashboardRouter);
+app.use('/dashboard', requiresAuth(), dashboardRouter);
 app.use('/contact', contactRouter);
 app.use('/privacy-policy', privacyPolicyRouter);
 app.use('/privacy-policy.html', privacyPolicyRouter); // Deprecate after next release

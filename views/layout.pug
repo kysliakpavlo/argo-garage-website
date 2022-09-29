@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    block styles
     script(src='/js/scripts.js') 
     block scripts
 #wrapper
@@ -14,7 +15,7 @@ html
         li
           a(href='/') Home
         li
-         a(href='/dashboard') Dashboard 
+          a(href='/dashboard') Dashboard 
   #content
     block content
   #footer

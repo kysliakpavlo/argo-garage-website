@@ -1,0 +1,10 @@
+#dashnav {
+    float: left;
+    width: 800px;
+    background: #aab3bb;
+}
+  
+#dashcontent {
+    float: left;
+    width: 800px;
+}
