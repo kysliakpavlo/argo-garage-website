@@ -6,7 +6,7 @@ var nextContent = JSON.stringify({"ModerationLabels":[{"Confidence": 56.03160095
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('moderate', {
+  res.render('dashboard/moderate', {
     title: 'Argonovo | Dashboard',
     imageURL: nextImage,
     imageContent: nextContent
