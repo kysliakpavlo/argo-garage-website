@@ -12,14 +12,61 @@
 #middlecolumn {
     float: left;
     width: 500px;
-  }
-  
-  #leftcolumn {
-    width: 150px;
-    float: left;
-  }
-  
-  #rightcolumn {
-    width: 150px;
-    float: left;
-  }
+}
+
+#leftcolumn {
+  float: left;
+  width: 150px;
+}
+
+#rightcolumn {
+  width: 150px;
+  float: left;
+}
+
+table, th, td {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  margin: 5px 5px 5px 5px ;
+}
+
+th, td {
+  padding: 5px;
+}
+
+th {
+  text-align: left;
+}
+
+.rotate90 {  
+  -webkit-transform:rotate(90deg);  
+  -moz-transform: rotate(90deg);  
+  -ms-transform: rotate(90deg);  
+  -o-transform: rotate(90deg);  
+  transform: rotate(90deg);  
+}
+
+.rotate180 {  
+  -webkit-transform:rotate(180deg);  
+  -moz-transform: rotate(180deg);  
+  -ms-transform: rotate(180deg);  
+  -o-transform: rotate(180deg);  
+  transform: rotate(180deg);  
+}  
+
+.rotate270 {  
+  -webkit-transform:rotate(270deg);  
+  -moz-transform: rotate(270deg);  
+  -ms-transform: rotate(270deg);  
+  -o-transform: rotate(270deg);  
+  transform: rotate(270deg);  
+}
+
+#middleleftcolumn, #middlemiddlecolumn, #middlerightcolumn {
+  float: left;
+}
+
+#middlewide p, #middleleftcolumn p, #middlemiddlecolumn p, #middlerightcolumn p {
+  margin: 10px;
+  text-align: center;
+}
