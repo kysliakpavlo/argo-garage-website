@@ -8,3 +8,18 @@
     float: left;
     width: 800px;
 }
+
+#middlecolumn {
+    float: left;
+    width: 500px;
+  }
+  
+  #leftcolumn {
+    width: 150px;
+    float: left;
+  }
+  
+  #rightcolumn {
+    width: 150px;
+    float: left;
+  }
