@@ -62,11 +62,22 @@ th {
   transform: rotate(270deg);  
 }
 
+#middlebottom {
+  width: 500px;
+  background: #eeeeee;
+  float: left;  
+  margin-bottom: 10px;
+}
+
+#middlebottom pre {
+  margin: 10px;
+}
+
 #middleleftcolumn, #middlemiddlecolumn, #middlerightcolumn {
   float: left;
 }
 
-#middlewide p, #middleleftcolumn p, #middlemiddlecolumn p, #middlerightcolumn p {
+#middletop p, #middleleftcolumn p, #middlemiddlecolumn p, #middlerightcolumn p {
   margin: 10px;
   text-align: center;
 }
