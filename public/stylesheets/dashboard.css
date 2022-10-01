@@ -9,6 +9,11 @@
     width: 800px;
 }
 
+#dashcontent p {
+  margin: 40px;
+  text-align: center;
+}
+
 #middlecolumn {
     float: left;
     width: 500px;
@@ -16,11 +21,11 @@
 
 #leftcolumn {
   float: left;
-  width: 150px;
+  width: 130px;
 }
 
 #rightcolumn {
-  width: 150px;
+  width: 170px;
   float: left;
 }
 

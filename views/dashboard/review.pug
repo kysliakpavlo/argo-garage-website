@@ -39,42 +39,36 @@ block dashcontent
   #middlecolumn
     #middletop
       p
-        img(src=imageURL, max-width='100%', height='500px')
+        img(src=renderURL, max-width='100%', height='500px')
     #middleleftcolumn
       p 1
       p
-        img(src=imageURL, max-width='33%', height='160px', class='rotate90')
+        img(src=renderURL, max-width='33%', height='160px', class='rotate90')
     #middlemiddlecolumn
       p 2
       p
-        img(src=imageURL, max-width='34%', height='160px', class='rotate180')
+        img(src=renderURL, max-width='34%', height='160px', class='rotate180')
     #middlerightcolumn
       p 3
       p
-        img(src=imageURL, max-width='33%', height='160px', class='rotate270')
+        img(src=renderURL, max-width='33%', height='160px', class='rotate270')
     #middlebottom
-      pre #{imageContent}
+      pre #{renderJSONdata}
   #rightcolumn     
     table
       tr
         th Attribute 
         th Value
       tr
-        td Hidden 
-        td FALSE
+        td Blocked 
+        td #{renderBlocked}
       tr
         td Filtered 
-        td FALSE
+        td #{renderFiltered}
       tr
-        td Blocked 
-        td FALSE
+        td Hidden 
+        td #{renderHidden}
       tr
-        td Explicit Nudity  
-        td 97.0
-      tr
-        td Blocked 
-        td 50.0
-      tr
-        td Violence 
-        td 50.0
+        td Orientation 
+        td #{renderOrientation}
       
