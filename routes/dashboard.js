@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('dashboard', { title: 'Argonovo | Dashboard' });
+  res.render('moderate', { title: 'Argonovo | Dashboard' });
 });
 
 module.exports = router;
