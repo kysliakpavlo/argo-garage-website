@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block styles 
   link(rel='stylesheet', href='/stylesheets/dashboard.css')
@@ -6,6 +6,12 @@ block styles
 block content
   #dashnav    
     nav 
+      ul 
+        li
+          a(href='/dashboard/flagged') Flagged
+      ul 
+        li
+          a(href='/dashboard/review') Review
       ul 
         li
           a(href='/logout') Logout

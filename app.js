@@ -8,7 +8,7 @@ require('dotenv').config();
 const { auth, requiresAuth } = require('express-openid-connect');
 
 var indexRouter	= require('./routes/index');
-var dashboardRouter = require('./routes/dashboard');
+var dashboardRouter = require('./routes/dashboard/index');
 var contactRouter = require('./routes/contact');
 var privacyPolicyRouter = require('./routes/privacy-policy');
 var userPolicyRouter = require('./routes/user-policy');
