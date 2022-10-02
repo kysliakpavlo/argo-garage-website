@@ -42,7 +42,7 @@ client.query(queryTxt,(err,res)=>{
 
     router.get('/', function(req, res, next) {
       res.render('dashboard/review', {
-        title: 'Argonovo | Flagged',
+        title: 'Argonovo | Review',
         renderURL: endpointURL+image_id,
         renderOrientation: camera_orientation,
         renderJSONdata: JSON.stringify(device_type,null,2),
