@@ -1,4 +1,23 @@
-queryTxt = `
+queryTxt = [`
+  SELECT
+    image_id,
+    camera_orientation,
+    device_type,
+    blocked,
+    hidden,
+    filtered
+  FROM media
+  WHERE
+    processed_amazon=TRUE AND
+    processed_manually=FALSE AND
+    content_type='image' AND    
+    (
+      blocked=TRUE OR
+      filtered=TRUE
+    )
+  ORDER BY upload_time DESC
+  LIMIT 1
+  `,`
   SELECT
     image_id,
     camera_orientation,
@@ -12,7 +31,7 @@ queryTxt = `
     content_type='image'
   ORDER BY upload_time DESC
   LIMIT 1
-  `;
+  `];
 
 require('dotenv').config();
 var express = require('express');
@@ -31,7 +50,7 @@ const client = new Client({
 
 client.connect();
 
-client.query(queryTxt,(err,res)=>{
+client.query(queryTxt[0],(err,res)=>{
 	if(!err && res.rowCount==1) {    
     var image_id = res.rows[0]['image_id'];
     var camera_orientation = res.rows[0]['camera_orientation'];    

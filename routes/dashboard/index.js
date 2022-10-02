@@ -1,12 +1,10 @@
 var express = require('express');
 var app = express();
 
-var flaggedRouter	= require('./flagged');
 var reviewRouter	= require('./review');
 var processRouter	= require('./process');
 
-app.use('/', flaggedRouter);
-app.use('/flagged', flaggedRouter);
+app.use('/', reviewRouter);
 app.use('/review', reviewRouter);
 
 // example /process/id/1323/mod/j
