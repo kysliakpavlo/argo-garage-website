@@ -51,14 +51,6 @@ client.query(queryTxt,(err,res)=>{
                 default:
                     response = 'Unknown mod';
             }
-
-
-
-
-
-
-
-
             res.send(response);
         });
     } else {
