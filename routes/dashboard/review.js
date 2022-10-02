@@ -1,4 +1,4 @@
-queryTxt = [`
+const queryTxt = [`
   SELECT
     image_id,
     camera_orientation,
@@ -34,33 +34,50 @@ queryTxt = [`
   `];
 
 require('dotenv').config();
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { Client } = require('pg');
 
-var endpointURL = 'https://6fup2zzx27dmctf34en2bnn4om0vrrqa.lambda-url.us-east-1.on.aws/image/';
-
 const client = new Client({
-	host	: process.env.RDS_HOSTNAME,
-	user	: process.env.RDS_USERNAME,
-	port	: process.env.RDS_PORT,
-	password: process.env.RDS_PASSWORD,
-	database: process.env.RDS_DB_NAME
+  host  : process.env.RDS_HOSTNAME,
+  user  : process.env.RDS_USERNAME,
+  port  : process.env.RDS_PORT,
+  password: process.env.RDS_PASSWORD,
+  database: process.env.RDS_DB_NAME
 });
+
+var toRenderRoute = 'dashboard/done';
+var toRenderParams = {
+  title: 'Argonovo'
+};
 
 client.connect();
 
-client.query(queryTxt[0],(err,res)=>{
-	if(!err && res.rowCount==1) {    
-    var image_id = res.rows[0]['image_id'];
-    var camera_orientation = res.rows[0]['camera_orientation'];    
-    var device_type = JSON.parse(res.rows[0]['device_type']);
-    var blocked = res.rows[0]['blocked'];
-    var filtered = res.rows[0]['filtered'];
-    var hidden = res.rows[0]['hidden'];
+const endpointURL = 'https://6fup2zzx27dmctf34en2bnn4om0vrrqa.lambda-url.us-east-1.on.aws/image/';
 
-    router.get('/', function(req, res, next) {
-      res.render('dashboard/review', {
+router.get('/', function(req, res, next) {
+  const baseURL = req.baseUrl;
+  var reviewType = baseURL.match(/(?<=\/review\/)[01]/g);
+
+  if (reviewType == null) {
+    reviewType = 0;
+  } else {
+    reviewType = reviewType[0];
+  }
+
+
+
+  client.query(queryTxt[reviewType],(err,res)=>{
+    if(!err && res.rowCount==1) {    
+      var image_id = res.rows[0]['image_id'];
+      var camera_orientation = res.rows[0]['camera_orientation'];    
+      var device_type = JSON.parse(res.rows[0]['device_type']);
+      var blocked = res.rows[0]['blocked'];
+      var filtered = res.rows[0]['filtered'];
+      var hidden = res.rows[0]['hidden'];
+
+      toRenderRoute = 'dashboard/review';
+      toRenderParams = {
         title: 'Argonovo | Review',
         renderURL: endpointURL+image_id,
         renderOrientation: camera_orientation,
@@ -68,16 +85,13 @@ client.query(queryTxt[0],(err,res)=>{
         renderBlocked: blocked,
         renderFiltered: filtered,
         renderHidden: hidden
-      });
-    });
-	} else {		    
-    router.get('/', function(req, res, next) {
-      res.render('dashboard/done', {
-        title: 'Argonovo'
-      });
-    });
-	}
-	client.end();
-})
+      };      
+    }
+
+    client.end();
+  });
+
+  res.render(toRenderRoute, toRenderParams); 
+});
 
 module.exports = router;
