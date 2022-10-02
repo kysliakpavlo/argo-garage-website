@@ -1,5 +1,5 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
   background: #F6F6F6;
 }
 
@@ -17,9 +17,9 @@ body {
 }
 
 #header p {
-  margin-left: 20px;
-  font: 28px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 28px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
   color: white;
+  text-align:center;
 }
 
 #navigation {
@@ -37,6 +37,15 @@ body {
 
 #content p {
   padding: 0px 20px 0px 20px ;
+}
+
+#home p {
+  text-align:center;
+}
+
+#home img {
+  padding: 5px;
+  border-radius: 20px;
 }
 
 #footer {

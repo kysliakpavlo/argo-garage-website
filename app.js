@@ -13,7 +13,6 @@ var contactRouter = require('./routes/contact');
 var privacyPolicyRouter = require('./routes/privacy-policy');
 var userPolicyRouter = require('./routes/user-policy');
 var roadmapRouter = require('./routes/roadmap');
-var helpOutRouter = require('./routes/helpout');
 
 var app = express();
 
@@ -45,7 +44,6 @@ app.use('/privacy-policy', privacyPolicyRouter);
 app.use('/privacy-policy.html', privacyPolicyRouter); // Deprecate after next release
 app.use('/user-policy', userPolicyRouter);
 app.use('/roadmap', roadmapRouter);
-app.use('/helpout', helpOutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
