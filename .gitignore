@@ -3,4 +3,5 @@
 
 #NPM
 node_modules/
+public/images/
 .env
