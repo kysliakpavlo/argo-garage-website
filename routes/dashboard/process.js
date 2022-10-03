@@ -1,7 +1,3 @@
-queryTxt = `
-    select now()
-`;
-
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -15,48 +11,59 @@ const client = new Client({
 	database: process.env.RDS_DB_NAME
 });
 
+var queryTxt = 'SELECT NOW()';
+
 client.connect();
 
-client.query(queryTxt,(err,res)=>{
-	if(!err) {   
-        app.get('/', function(req, res, next) {
-            var baseURL = req.baseUrl;
-            var image_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[a-z0-9])/g)[0];
-            var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[a-z0-9]/g)[0];
-            console.log(baseURL);
-            console.log(image_id);
-            console.log(mod);
-
-            var response = 'Done';
-
-            switch(mod) {
-                case '1':
-                    response = '1';
-                    break;
-                case '2':
-                    response = '2';
-                    break;
-                case '3':
-                    response = '3';
-                    break;
-                case 'b':
-                    response = 'b';
-                    break;
-                case 'f':
-                    response = 'f';
-                    break;
-                case 'j':
-                    response = 'j';
-                    break;
-                default:
-                    response = 'Unknown mod';
-            }
-            res.send(response);
-        });
-    } else {
-		console.log(err.message);
+app.get('/', function(req, res, next) {
+    var baseURL = req.baseUrl;
+    var image_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[a-z0-9])/g)[0];
+    var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[a-z0-9]/g)[0];
+    
+    switch(mod) {
+        case 'b':
+            queryTxt = `
+                UPDATE media
+                SET
+                    blocked=TRUE
+                WHERE id=`+image_id;
+            break;
+        case 'c':
+            queryTxt = `
+                UPDATE media
+                SET
+                    blocked=FALSE,
+                    filtered=FALSE
+                WHERE id=`+image_id;
+            break;
+        case 'f':
+            queryTxt = `
+                UPDATE media
+                SET
+                    filtered=TRUE
+                WHERE id=`+image_id;
+            break;
+        case 'j':
+            queryTxt = `
+                UPDATE media
+                SET
+                    processed_manually=TRUE
+                WHERE id=`+image_id;
+            break;
     }
-	client.end();
-})
+
+    client.query(queryTxt,(err,res)=>{
+        if(!err) {
+            console.log('successful query');
+            console.log(queryTxt);
+        } else {
+            console.log(err.message);
+        }
+        client.end();
+    });
+
+    res.send(queryTxt); 
+    //res.redirect('/dashboard/review');
+});
 
 module.exports = app;

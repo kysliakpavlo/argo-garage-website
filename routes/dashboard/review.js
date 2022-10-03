@@ -1,6 +1,7 @@
 const endpointURL = 'https://6fup2zzx27dmctf34en2bnn4om0vrrqa.lambda-url.us-east-1.on.aws/image/';
 const queryTxt = `
   SELECT
+    id,
     image_id,
     camera_orientation,
     device_type,
@@ -35,6 +36,7 @@ client.connect();
 
 client.query(queryTxt,(err,res)=>{
   if(!err && res.rowCount==1) {    
+    var row_id = res.rows[0]['id'];
     var image_id = res.rows[0]['image_id'];
     var camera_orientation = res.rows[0]['camera_orientation'];    
     var device_type = JSON.parse(res.rows[0]['device_type']);
@@ -45,7 +47,9 @@ client.query(queryTxt,(err,res)=>{
     router.get('/', function(req, res, next) {
       res.render('dashboard/review', {
         title: 'Argonovo | Review',
-        renderURL: endpointURL+image_id,
+        renderRowID: row_id,
+        renderImageID: image_id,
+        renderImageURL: endpointURL+image_id,
         renderOrientation: camera_orientation,
         renderJSONdata: JSON.stringify(device_type,null,2),
         renderBlocked: blocked,
