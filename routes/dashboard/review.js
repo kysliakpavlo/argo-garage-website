@@ -1,21 +1,26 @@
 const Router = require('express-promise-router');
 const util = require('util');
 const db = require('../../db');
-
-// create a new express-promise-router
-// this has the same API as the normal express router except
-// it allows you to use async functions as route handlers
 const router = new Router();
 
 router.get('/', async (req, res) => {
   const endpointURL = 'https://6fup2zzx27dmctf34en2bnn4om0vrrqa.lambda-url.us-east-1.on.aws/image/';
   const queryTxtA = `SELECT id,image_id,camera_orientation,device_type,blocked,hidden,filtered FROM media `;
   const queryTxtB = [
-    `WHERE processed_manually=FALSE AND content_type='image'`,
-    `WHERE processed_manually=FALSE AND content_type='image'`,
-    `WHERE processed_manually=FALSE AND content_type='image'`
+    `WHERE processed_manually=FALSE AND content_type='image' AND (blocked=TRUE OR filtered=TRUE) `,
+    `WHERE processed_manually=FALSE AND content_type='image' AND (blocked=TRUE OR filtered=TRUE) `,
+    `WHERE processed_manually=FALSE AND content_type='image' `
   ];
-  const queryTxtC = `ORDER BY blocked DESC,filtered DESC,upload_time DESC LIMIT 1`;
+  const queryTxtC = [
+    `ORDER BY blocked DESC,filtered DESC,upload_time DESC LIMIT 1`,
+    `ORDER BY upload_time ASC LIMIT 1`,
+    `ORDER BY upload_time ASC LIMIT 1`
+  ];
+
+  var renderRoute = 'dashboard/done';
+  var renderParams = {
+    title: 'Argonovo'
+  };
       
   var baseURL = req.baseUrl;
   var process_id = baseURL.match(/(?<=\/review\/)[012]/g);  
@@ -25,9 +30,34 @@ router.get('/', async (req, res) => {
     process_id = '0';
   }
 
-  const { rows } = await db.query(queryTxtA+queryTxtB[process_id]+queryTxtC)
-  res.send(rows[0])
+  console.log(queryTxtA+queryTxtB[process_id]+queryTxtC[process_id]);
+  const { rows } = await db.query(queryTxtA+queryTxtB[process_id]+queryTxtC[process_id]);
+  if (rows.length == 1) {    
+    console.log(rows[0]['device_type']);
+
+    var row_id = rows[0]['id'];
+    var image_id = rows[0]['image_id'];
+    var camera_orientation = rows[0]['camera_orientation'];    
+    var device_type = JSON.parse(rows[0]['device_type']);
+    var blocked = rows[0]['blocked'];
+    var filtered = rows[0]['filtered'];
+    var hidden = rows[0]['hidden'];
+
+    renderRoute = 'dashboard/review';
+    renderParams = {
+      title: 'Argonovo | Review',
+      renderRowID: row_id,
+      renderImageID: image_id,
+      renderImageURL: endpointURL+image_id,
+      renderOrientation: camera_orientation,
+      renderJSONdata: JSON.stringify(device_type,null,2),
+      renderBlocked: blocked,
+      renderFiltered: filtered,
+      renderHidden: hidden
+    };
+  }
+  
+  res.render(renderRoute, renderParams);
 });
 
-// export our router to be mounted by the parent application
 module.exports = router;
