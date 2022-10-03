@@ -1,25 +1,13 @@
-require('dotenv').config();
-const express = require('express');
-const app = express();
-const { Client } = require('pg');
+const Router = require('express-promise-router');
+const util = require('util');
+const db = require('../../db');
+const router = new Router();
 
-const client = new Client({
-	host	: process.env.RDS_HOSTNAME,
-	user	: process.env.RDS_USERNAME,
-	port	: process.env.RDS_PORT,
-	password: process.env.RDS_PASSWORD,
-	database: process.env.RDS_DB_NAME
-});
-
-var queryTxt = 'SELECT NOW()';
-
-client.connect();
-
-app.get('/', function(req, res, next) {
+router.get('/', async (req, res) => {
     var baseURL = req.baseUrl;
     var image_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[a-z0-9])/g)[0];
     var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[a-z0-9]/g)[0];
-    
+
     switch(mod) {
         case 'b':
             queryTxt = `
@@ -52,18 +40,12 @@ app.get('/', function(req, res, next) {
             break;
     }
 
-    client.query(queryTxt,(err,res)=>{
-        if(!err) {
-            console.log('successful query');
-            console.log(queryTxt);
-        } else {
-            console.log(err.message);
-        }
-        client.end();
-    });
-
-    res.send(queryTxt); 
-    //res.redirect('/dashboard/review');
+    const { rows } = await db.query(queryTxt);
+  
+    ////res.redirect('/dashboard/review');
+    //console.log(req.get('Referrer'));
+    //res.redirect(req.get('Referrer'))
+    res.send(rows);
 });
 
-module.exports = app;
+module.exports = router;
