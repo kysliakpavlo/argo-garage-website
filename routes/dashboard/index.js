@@ -5,7 +5,7 @@ var reviewRouter	= require('./review');
 var processRouter	= require('./process');
 
 app.use('/', reviewRouter);
-app.use('/review(\/[01])?', reviewRouter);
+app.use('/review', reviewRouter);
 
 // example /process/id/1323/mod/j
 //  modification image_id=1, done processing
