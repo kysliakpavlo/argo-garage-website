@@ -1,4 +1,8 @@
-extends index 
+extends index
+
+block scripts
+  script(src='/js/review.js')
+  script var db_id = #{renderRowID}
 
 block dashcontent    
   #leftcolumn 

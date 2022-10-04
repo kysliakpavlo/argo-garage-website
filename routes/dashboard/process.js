@@ -38,14 +38,13 @@ router.get('/', async (req, res) => {
                     processed_manually=TRUE
                 WHERE id=`+image_id;
             break;
+        default:
+            queryTxt = `SELECT NOW()`;
     }
 
     const { rows } = await db.query(queryTxt);
   
-    ////res.redirect('/dashboard/review');
-    //console.log(req.get('Referrer'));
-    //res.redirect(req.get('Referrer'))
-    res.send(rows);
+    res.redirect(req.get('Referrer'))
 });
 
 module.exports = router;

@@ -30,10 +30,8 @@ router.get('/', async (req, res) => {
     process_id = '0';
   }
 
-  console.log(queryTxtA+queryTxtB[process_id]+queryTxtC[process_id]);
   const { rows } = await db.query(queryTxtA+queryTxtB[process_id]+queryTxtC[process_id]);
-  if (rows.length == 1) {    
-    console.log(rows[0]['device_type']);
+  if (rows.length == 1) {  
 
     var row_id = rows[0]['id'];
     var image_id = rows[0]['image_id'];
