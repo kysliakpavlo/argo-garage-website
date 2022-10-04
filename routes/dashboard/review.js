@@ -72,6 +72,8 @@ router.get('/', async (req, res) => {
       visualflag = 'visualflagred';      
     } else if (filtered == true) {
       visualflag = 'visualflagyellow';      
+    } else if (filtered == true) {
+      visualflag = 'visualflagblue';      
     }
 
     renderRoute = 'dashboard/review';

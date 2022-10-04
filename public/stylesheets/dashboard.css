@@ -95,3 +95,7 @@ th {
 .visualflagyellow {
   border: 10px solid #ffffc0;
 }
+
+.visualflagblue {
+  border: 10px solid #c0c0ff;
+}
