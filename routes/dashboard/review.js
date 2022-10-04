@@ -64,7 +64,15 @@ router.get('/', async (req, res) => {
         camera_orientation2 = 'rotate270';
         camera_orientation3 = '';
         break;
-    }  
+    }
+
+    var visualflag = '';
+    
+    if (blocked == true) {
+      visualflag = 'visualflagred';      
+    } else if (filtered == true) {
+      visualflag = 'visualflagyellow';      
+    }
 
     renderRoute = 'dashboard/review';
     renderParams = {
@@ -80,7 +88,8 @@ router.get('/', async (req, res) => {
       renderJSONdata: JSON.stringify(device_type,null,2),
       renderBlocked: blocked,
       renderFiltered: filtered,
-      renderHidden: hidden
+      renderHidden: hidden,
+      renderVisual: visualflag
     };
   }
   

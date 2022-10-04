@@ -87,3 +87,11 @@ th {
   margin: 10px;
   text-align: center;
 }
+
+.visualflagred {
+  border: 10px solid #ffc0c0;
+}
+
+.visualflagyellow {
+  border: 10px solid #ffffc0;
+}
