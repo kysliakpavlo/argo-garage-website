@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 
     const { rows } = await db.query(queryTxt);
   
-    res.redirect(req.get('Referrer'))
+    res.redirect(req.get('Referrer'));
 });
 
 module.exports = router;

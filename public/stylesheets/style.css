@@ -5,12 +5,12 @@ body {
 
 #wrapper {
   margin: 0 auto;
-  width: 800px;
+  width: 1000px;
 }
 
 #header {
   float: left;
-  width: 800px;
+  width: 1000px;
   background: #0B93C1;;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -24,14 +24,14 @@ body {
 
 #navigation {
   float: left;
-  width: 800px;
+  width: 1000px;
   background: #5D6D7E
 }
 
 #content {
   float: left;
   background: #FFFFFF;
-  width: 800px;
+  width: 1000px;
   min-height: 600px;
 }
 
@@ -50,7 +50,7 @@ body {
 
 #footer {
   float: left;
-  width: 800px;
+  width: 1000px;
   background: #5D6D7E;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;

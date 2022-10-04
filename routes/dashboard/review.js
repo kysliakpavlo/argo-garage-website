@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
 
     var row_id = rows[0]['id'];
     var image_id = rows[0]['image_id'];
-    var device_type = JSON.parse(rows[0]['device_type']);
+    var device_type = rows[0]['device_type'];
     var blocked = rows[0]['blocked'];
     var filtered = rows[0]['filtered'];
     var hidden = rows[0]['hidden'];
@@ -46,11 +46,11 @@ router.get('/', async (req, res) => {
     var camera_orientation3 = 'rotate270';
 
     switch (camera_orientation) {
-      case 'landscapeRight':
-        camera_orientation0 = 'rotate90';
-        camera_orientation1 = 'rotate180';
-        camera_orientation2 = 'rotate270';
-        camera_orientation3 = '';
+      case 'landscapeLeft':
+        camera_orientation0 = 'rotate270';
+        camera_orientation1 = '';
+        camera_orientation2 = 'rotate90';
+        camera_orientation3 = 'rotate180';
         break;
       case 'portraitDown':
         camera_orientation0 = 'rotate180';
@@ -58,11 +58,11 @@ router.get('/', async (req, res) => {
         camera_orientation2 = '';
         camera_orientation3 = 'rotate90';
         break;
-      case 'landscapeLeft':
-        camera_orientation0 = 'rotate180';
-        camera_orientation1 = 'rotate270';
-        camera_orientation2 = '';
-        camera_orientation3 = 'rotate90';
+      case 'landscapeRight':
+        camera_orientation0 = 'rotate90';
+        camera_orientation1 = 'rotate180';
+        camera_orientation2 = 'rotate270';
+        camera_orientation3 = '';
         break;
     }  
 

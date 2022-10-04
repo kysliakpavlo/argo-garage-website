@@ -1,12 +1,12 @@
 #dashnav {
     float: left;
-    width: 800px;
+    width: 1000px;
     background: #aab3bb;
 }
   
 #dashcontent {
     float: left;
-    width: 800px;
+    width: 1000px;
 }
 
 #dashcontent p {
@@ -16,16 +16,16 @@
 
 #middlecolumn {
     float: left;
-    width: 500px;
+    width: 660px;
 }
 
 #leftcolumn {
   float: left;
-  width: 90px;
+  width: 100px;
 }
 
 #rightcolumn {
-  width: 210px;
+  width: 240px;
   float: left;
 }
 
@@ -68,7 +68,7 @@ th {
 }
 
 #middlebottom {
-  width: 500px;
+  width: 700px;
   background: #eeeeee;
   float: left;  
   margin-bottom: 10px;
@@ -80,6 +80,7 @@ th {
 
 #middleleftcolumn, #middlemiddlecolumn, #middlerightcolumn {
   float: left;
+  width: 220px;
 }
 
 #middletop p, #middleleftcolumn p, #middlemiddlecolumn p, #middlerightcolumn p {
