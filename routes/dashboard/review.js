@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
 
     var row_id = rows[0]['id'];
     var image_id = rows[0]['image_id'];
-    var device_type = rows[0]['device_type'];
+    var device_type = JSON.parse(rows[0]['device_type']);
     var blocked = rows[0]['blocked'];
     var filtered = rows[0]['filtered'];
     var hidden = rows[0]['hidden'];
