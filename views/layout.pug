@@ -3,22 +3,24 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='preconnect', href='https://fonts.googleapis.com')
+    link(rel='preconnect', href='https://fonts.gstatic.com' crossorigin)
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap')
     block styles
     script(src='/js/scripts.js') 
     block scripts
 #wrapper
-  #header 
-    p
-      img(src='/images/banner.png' alt='Argonovo')
-  #navigation
+  #navigation 
     nav 
       ul 
         li
-          a(href='/') Home
+          a(href='/') Argonovo
         li
-          a(href='/dashboard') Dashboard 
-  #content
-    block content
+          a(href='/dashboard') Dashboard
+        li
+          a(href='/roadmap') Roadmap
+  #content 
+    block content 
   #footer
     nav 
       ul 
@@ -28,5 +30,3 @@ html
           a(href='/privacy-policy') Privacy Policy 
         li
           a(href='/user-policy') User Policy
-        li
-          a(href='/roadmap') Roadmap

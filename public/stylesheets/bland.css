@@ -1,0 +1,24 @@
+#content {
+    padding: 40px;
+    text-align: left;
+    min-height: 800px;
+}
+
+strong {
+    font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#content ul, #content li {
+    font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
+}
+
+#content p {
+    font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
+    margin-bottom: 10px;
+}
+
+#content a {
+    font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
+    color: blue;
+}

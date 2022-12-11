@@ -1,16 +1,25 @@
 extends layout
 
+block styles
+   link(rel='stylesheet', href='/stylesheets/home.css')
+
 block content
-  #home
-    p.
-      If you have been to a wedding, concert, or a good party and wanted all
-      the photos? Argonovo let’s you share photos instantly with those around you.
-    p 
-        img(src='/images/ss01.png' alt='Screenshot 1') 
-        img(src='/images/ss02.png' alt='Screenshot 2')
-        img(src='/images/ss03.png' alt='Screenshot 3')
-    p 
-      a(href='https://play.google.com/store/apps/details?id=com.argonovo.h')
-        img(src='/images/google.png' alt='Android Store')
-      a(href='https://apps.apple.com/us/app/argonovo/id1627814702')
-        img(src='/images/apple.png' alt='Apple Store')
+  #header 
+    #logo 
+      p
+        img(src='/images/banner.png' alt='')
+    #objective 
+      p.
+        If you have been to a wedding, concert, or a good party and wanted all
+        the photos? Argonovo let’s you share photos instantly with those around you. 
+  #blurbs 
+    #store      
+      p 
+        img(class='rounded' src='/images/ss01.png' alt='Screenshot 1') 
+        img(class='rounded' src='/images/ss02.png' alt='Screenshot 2')
+        img(class='rounded' src='/images/ss03.png' alt='Screenshot 3')
+      p 
+        a(href='https://play.google.com/store/apps/details?id=com.argonovo.h')
+          img(class='rounded' src='/images/google.png' alt='Android Store')
+        a(href='https://apps.apple.com/us/app/argonovo/id1627814702')
+          img(class='rounded' src='/images/apple.png' alt='Apple Store')

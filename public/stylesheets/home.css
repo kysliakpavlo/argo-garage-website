@@ -1,0 +1,55 @@
+#header {
+  width: 100%;
+  background-image: url("../images/splash.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+#logo, #objective {
+  width: 50%;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#logo {
+  float: left;
+  text-align: right;
+  z-index: 1;
+}
+
+#logo img {  
+  opacity: 0.7;
+  margin-right: -10px;
+}
+
+#objective {
+  float: right;
+  text-align: left;
+  z-index: 10;
+}
+
+#objective p {
+  width: 300px;
+  font: 22px 'DM Serif Display', Georgia, Helvetica;
+  font-style: italic;
+  padding-top: 20px;
+  margin-left: -10px;
+}
+
+#blurbs {  
+  clear: both;
+  background: #FFFFFF;
+  color: #273746;
+  width: 100%;
+  padding: 20px;
+  margin: 0;
+}
+
+.rounded {
+  padding: 5px;
+  border-radius: 20px;
+}

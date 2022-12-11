@@ -1,75 +1,55 @@
 body {
-  font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
-  background: #F6F6F6;
+  font: 28px 'DM Serif Text', Georgia, Helvetica;
+  background: #273746;
+  color: #FFFFFF;
+  padding: 0;
+  margin: 0;
+  min-width: 600px;
 }
 
 #wrapper {
-  margin: 0 auto;
-  width: 1000px;
-}
-
-#header {
-  float: left;
-  width: 1000px;
-  background: #0B93C1;;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-#header p {
-  font: 28px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
-  color: white;
-  text-align:center;
+  text-align: center;
 }
 
 #navigation {
-  float: left;
-  width: 1000px;
-  background: #5D6D7E
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
 }
 
 #content {
-  float: left;
   background: #FFFFFF;
-  width: 1000px;
-  min-height: 600px;
-}
-
-#content p {
-  padding: 0px 20px 0px 20px ;
-}
-
-#home p {
-  text-align:center;
-}
-
-#home img {
-  padding: 5px;
-  border-radius: 20px;
+  color: #273746;
 }
 
 #footer {
-  float: left;
-  width: 1000px;
-  background: #5D6D7E;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  width: 100%;
+  background: #273746;
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
 }
 
 nav ul {
   list-style-type: none;
-  margin: 0 20px 0 0;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li {
-  margin: 10px 30px 10px 20px;
-  float: left;
-  color: white
-}
-
-nav ul li a {
-  color: white;
+  display: inline;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 nav ul li a:hover, nav ul li a:focus {
@@ -77,10 +57,27 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 a {
-  text-decoration: none; /* no underline */
-  color: #0B93C1;
+  text-decoration: none; /* no underline */  
+  color: #FFFFFF;
 }
 
 a:hover, a:focus {
   text-decoration: underline;
+}
+
+/* Used on Contact and Roadmap Pages */
+
+#list {
+  padding: 40px;
+  text-align: left;
+  min-height: 800px;
+}
+
+#list p {  
+  font: 20px 'DM Serif Display', Georgia, Helvetica;
+}
+
+#list ul, #list li {  
+  font: 16px 'DM Serif Display', Georgia, Helvetica;
+  
 }
