@@ -9,6 +9,15 @@ strong {
     font-weight: bold;
 }
 
+li {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+ul {
+    padding-bottom: 20px;
+}
+
 #content ul, #content li {
     font: 14px Verdana, Arial, "Lucida Grande", Helvetica, sans-serif;
 }

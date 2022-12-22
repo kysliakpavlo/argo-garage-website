@@ -1,83 +1,99 @@
-body {
-  font: 28px 'DM Serif Text', Georgia, Helvetica;
-  background: #273746;
-  color: #FFFFFF;
-  padding: 0;
+* {
   margin: 0;
-  min-width: 600px;
+  padding: 0;
+  border: 0;   
+}
+
+body {
+  color: #FFFFFF;
+  background: #273746;    
 }
 
 #wrapper {
+  font: 18px 'DM Serif Text', Georgia, Helvetica;
   text-align: center;
 }
 
-#navigation {
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0;
+#header {
 }
 
 #content {
+  color: #000000;
   background: #FFFFFF;
-  color: #273746;
+}
+
+#content-nav, #content-nav a {
+  color: #FFFFFF;
+  background: #646769;
 }
 
 #footer {
-  width: 100%;
-  background: #273746;
-  color: #FFFFFF;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: 0;
+  clear: both;
 }
 
-p {
-  padding: 0;
-  margin: 0;
+.nav ul {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-nav ul {
+.nav li {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline;
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 10px;  
 }
 
-nav ul li a:hover, nav ul li a:focus {
-  color: white;
+.list {
+  display: inline-block;
+  text-align: left;
+  vertical-align: text-top;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-a {
-  text-decoration: none; /* no underline */  
+.list ul {
+
+}
+
+.list li {
+  list-style-type: none;
+  font: 14px 'DM Serif Text', Georgia, Helvetica;
+  margin-left: 10px;
+  margin-right: 10px; 
+}
+
+@media only screen and (min-width: 400px) {
+  .nav li {
+      display: inline;
+  }   
+
+  .columns {
+      display: grid;
+  }
+
+  .single {
+      grid-template-columns: auto;        
+  }
+
+  .double {
+      grid-template-columns: auto auto;        
+  }
+
+  .triple {
+      grid-template-columns: auto auto auto;        
+  }
+}
+
+.nav a, .list a {
   color: #FFFFFF;
+  background: #273746;
+  text-decoration: none; /* no underline */ 
 }
 
-a:hover, a:focus {
+.nav a:hover, .list a:hover {
   text-decoration: underline;
 }
 
-/* Used on Contact and Roadmap Pages */
-
-#list {
-  padding: 40px;
-  text-align: left;
-  min-height: 800px;
-}
-
-#list p {  
-  font: 20px 'DM Serif Display', Georgia, Helvetica;
-}
-
-#list ul, #list li {  
-  font: 16px 'DM Serif Display', Georgia, Helvetica;
-  
+.rounded {
+  padding: 5px;
+  border-radius: 20px;
 }

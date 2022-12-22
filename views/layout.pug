@@ -10,22 +10,29 @@ html
     script(src='/js/scripts.js') 
     block scripts
 #wrapper
-  #navigation 
-    nav 
-      ul 
-        li
-          a(href='/') Argonovo
-        li
-          a(href='/dashboard') Dashboard
-        li
-          a(href='/roadmap') Roadmap
+  #header
+    #header-nav.nav 
+      nav 
+        ul 
+          li
+            a(href='/') Argonovo
+          li
+            a(href='/dashboard') Dashboard
   #content 
     block content 
   #footer
-    nav 
+    .list 
+      p Contact 
       ul 
+        li Argonovo
+        li PO Box 348
+        li Wellborn TX 77881
         li
-          a(href='/contact') Contact 
+          a(href='mailto:outside@argonovo.com') outside@argonovo.com
+        li +1 (979) 356-2271
+    .list 
+      p Policies 
+      ul
         li
           a(href='/privacy-policy') Privacy Policy 
         li
