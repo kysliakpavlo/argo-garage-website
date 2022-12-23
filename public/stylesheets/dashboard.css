@@ -1,15 +1,6 @@
 table, th, td {
   border: 1px solid #dddddd;
   border-collapse: collapse;
-  margin: 5px 5px 5px 5px ;
-}
-
-th, td {
-  padding: 5px;
-}
-
-th {
-  text-align: left;
 }
 
 .rotate90 {  
@@ -46,11 +37,6 @@ th {
 
 .visualflagblue {
   border: 10px solid #c0c0ff;
-}
-
-.samerow {
-  display: inline-block;
-  vertical-align: text-top;
 }
 
 /*
