@@ -4,16 +4,14 @@ block styles
   link(rel='stylesheet', href='/stylesheets/dashboard.css')
 
 block content
-  #dashnav    
+  #content-nav.nav
     nav
       ul 
         li
           a(href='/dashboard/review/1') Flagged
-      ul 
         li
           a(href='/dashboard/review/2') Review
-      ul 
         li
           a(href='/logout') Logout
-  #dashcontent 
-    block dashcontent
+  #dashboard 
+    block dashboard

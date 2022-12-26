@@ -43,7 +43,6 @@ body {
 }
 
 .list {
-  display: inline-block;
   text-align: left;
   vertical-align: text-top;
   padding-top: 5px;
@@ -62,6 +61,12 @@ body {
 }
 
 @media only screen and (min-width: 400px) {
+
+  .inline {
+    display: inline-block;
+    vertical-align: top;
+  }
+
   .nav li {
       display: inline;
   }   
@@ -94,6 +99,27 @@ body {
 }
 
 .rounded {
-  padding: 5px;
+  padding: 10px 5px 0px 5px;
   border-radius: 20px;
+}
+
+.boxbig {
+  height: 640px;
+  width: 640px;
+  object-fit: scale-down;
+  object-position: center top;
+}
+
+.boxthumb {
+  height: 200px;
+  width: 200px;
+  object-fit: scale-down;
+  object-position: center top;
+}
+
+.boxicon {
+  height: 100px;
+  width: 100px;
+  object-fit: scale-down;
+  object-position: center top;
 }

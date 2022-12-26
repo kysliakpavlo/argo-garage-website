@@ -4,69 +4,68 @@ block scripts
   script(src='/js/review.js')
   script var db_id = #{renderRowID}
 
-block dashcontent    
-  #leftcolumn 
-    table
-      tr
-        th Key 
-        th Tag
-      tr
-        td b 
-        td Block
-      tr
-        td c  
-        td Clear
-      tr
-        td f 
-        td Filter
-      tr
-        td 1 
-        td 90°
-      tr
-        td 2 
-        td 180°
-      tr
-        td 3 
-        td 270°
-      tr
-        td j 
-        td Done
-  #middlecolumn
-    #middletop
-      p
-        img(src=renderImageURL, class=[renderOrientation0,renderVisual], max-width='100%', height='500px')
-    #middleleftcolumn
+block dashboard
+  #status  
+    .inline 
+      table
+        tr
+          th Key 
+          th Tag
+        tr
+          td b 
+          td Block
+        tr
+          td c  
+          td Clear
+        tr
+          td f 
+          td Filter
+        tr
+          td 1 
+          td 90°
+        tr
+          td 2 
+          td 180°
+        tr
+          td 3 
+          td 270°
+        tr
+          td j 
+          td Done
+    .inline
+      img.boxthumb(src=renderImageURL, class=[renderOrientation0,renderVisual])
+    .inline
+      table
+        tr
+          th Attribute 
+          th Value
+        tr
+          td ID 
+          td #{renderRowID}
+        tr
+          td Blocked 
+          td #{renderBlocked}
+        tr
+          td Filtered 
+          td #{renderFiltered}
+        tr
+          td Hidden 
+          td #{renderHidden}
+        tr
+          td Orientation 
+          td #{renderOrientation}        
+  #orientation  
+    .inline
       p 1
       p
-        img(src=renderImageURL, class=renderOrientation1, max-width='33%', height='160px')
-    #middlemiddlecolumn
+        img.boxthumb(src=renderImageURL, class=renderOrientation1)
+    .inline
       p 2
       p
-        img(src=renderImageURL, class=renderOrientation2, max-width='34%', height='160px')
-    #middlerightcolumn
+        img.boxthumb(src=renderImageURL, class=renderOrientation2)
+    .inline
       p 3
       p
-        img(src=renderImageURL, class=renderOrientation3, max-width='33%', height='160px')
-    #middlebottom
-      pre #{renderJSONdata}
-  #rightcolumn     
-    table
-      tr
-        th Attribute 
-        th Value
-      tr
-        td ID 
-        td #{renderRowID}
-      tr
-        td Blocked 
-        td #{renderBlocked}
-      tr
-        td Filtered 
-        td #{renderFiltered}
-      tr
-        td Hidden 
-        td #{renderHidden}
-      tr
-        td Orientation 
-        td #{renderOrientation}
-      
+        img.boxthumb(src=renderImageURL, class=renderOrientation3)
+  #moderation 
+    pre #{renderJSONdata}
