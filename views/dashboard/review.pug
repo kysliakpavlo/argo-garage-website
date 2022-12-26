@@ -4,53 +4,68 @@ block scripts
   script(src='/js/review.js')
   script var db_id = #{renderRowID}
 
-block dashboard    
-  #leftcolumn.inline 
-    table
-      tr
-        th Key 
-        th Tag
-      tr
-        td b 
-        td Block
-      tr
-        td c  
-        td Clear
-      tr
-        td f 
-        td Filter
-      tr
-        td 1 
-        td 90°
-      tr
-        td 2 
-        td 180°
-      tr
-        td 3 
-        td 270°
-      tr
-        td j 
-        td Done
-  #middlecolumn.inline
-    img.boxthumb(src=renderImageURL, class=[renderOrientation0])
-  #rightcolumn.inline
-    table
-      tr
-        th Attribute 
-        th Value
-      tr
-        td ID 
-        td #{renderRowID}
-      tr
-        td Blocked 
-        td #{renderBlocked}
-      tr
-        td Filtered 
-        td #{renderFiltered}
-      tr
-        td Hidden 
-        td #{renderHidden}
-      tr
-        td Orientation 
-        td #{renderOrientation}
-      
+block dashboard
+  #status  
+    .inline 
+      table
+        tr
+          th Key 
+          th Tag
+        tr
+          td b 
+          td Block
+        tr
+          td c  
+          td Clear
+        tr
+          td f 
+          td Filter
+        tr
+          td 1 
+          td 90°
+        tr
+          td 2 
+          td 180°
+        tr
+          td 3 
+          td 270°
+        tr
+          td j 
+          td Done
+    .inline
+      img.boxthumb(src=renderImageURL, class=[renderOrientation0,renderVisual])
+    .inline
+      table
+        tr
+          th Attribute 
+          th Value
+        tr
+          td ID 
+          td #{renderRowID}
+        tr
+          td Blocked 
+          td #{renderBlocked}
+        tr
+          td Filtered 
+          td #{renderFiltered}
+        tr
+          td Hidden 
+          td #{renderHidden}
+        tr
+          td Orientation 
+          td #{renderOrientation}        
+  #orientation  
+    .inline
+      p 1
+      p
+        img.boxthumb(src=renderImageURL, class=renderOrientation1)
+    .inline
+      p 2
+      p
+        img.boxthumb(src=renderImageURL, class=renderOrientation2)
+    .inline
+      p 3
+      p
+        img.boxthumb(src=renderImageURL, class=renderOrientation3)
+  #moderation 
+    pre #{renderJSONdata}

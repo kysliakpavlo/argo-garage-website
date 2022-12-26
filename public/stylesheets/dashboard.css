@@ -1,6 +1,38 @@
 table, th, td {
   border: 1px solid #dddddd;
   border-collapse: collapse;
+  font: 18px Helvetica;
+  padding:2px 5px 2px 5px;
+  text-align: left;
+}
+
+#status {
+  margin: 20px 0 20px 0;
+}
+
+#orientation {
+  margin: 20px 0 20px 0;
+}
+
+#orientation div {
+  border: solid;
+  border-width: 1px;
+  border-color: #d7d7d7;
+}
+
+#moderation {
+  background: #eeeeee;
+  display: inline-block;
+  padding: 20px;
+  margin: 20px 0 20px 0;
+}
+
+#moderation pre {
+  text-align: left;
+}
+
+.inline {  
+  padding: 0 20px 0 20px;
 }
 
 .rotate90 {  
@@ -37,60 +69,4 @@ table, th, td {
 
 .visualflagblue {
   border: 10px solid #c0c0ff;
-}
-
-/*
-
-#dashboard-nav {
-    float: left;
-    width: 1000px;
-    background: #aab3bb;
-}
-  
-#dashboard {
-    float: left;
-    width: 1000px;
-}
-
-#dashboard p {
-  margin: 40px;
-  text-align: center;
-}
-
-#middlecolumn {
-    float: left;
-    width: 660px;
-}
-
-#leftcolumn {
-  float: left;
-  width: 100px;
-}
-
-#rightcolumn {
-  width: 240px;
-  float: left;
-}
-
-
-
-#middlebottom {
-  width: 660px;
-  background: #eeeeee;
-  float: left;  
-  margin-bottom: 10px;
-}
-
-#middlebottom pre {
-  margin: 10px;
-}
-
-#middleleftcolumn, #middlemiddlecolumn, #middlerightcolumn {
-  float: left;
-  width: 220px;
-}
-
-#middletop p, #middleleftcolumn p, #middlemiddlecolumn p, #middlerightcolumn p {
-  margin: 10px;
-  text-align: center;
 }
