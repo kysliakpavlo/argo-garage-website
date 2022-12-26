@@ -31,9 +31,9 @@ block dashboard
           td 270°
         tr
           td j 
-          td Done
+          td Done      
     .inline
-      img.boxthumb(src=renderImageURL, class=[renderOrientation0,renderVisual])
+      img.boxbig(src=renderImageURL, class=[renderOrientation0,renderVisual])
     .inline
       table
         tr
@@ -53,8 +53,12 @@ block dashboard
           td #{renderHidden}
         tr
           td Orientation 
-          td #{renderOrientation}        
-  #orientation  
+          td #{renderOrientation}
+        tr 
+          td Original 
+          td
+            img.boxicon(src=renderImageURL)       
+  #orientation
     .inline
       p 1
       p
