@@ -1,28 +1,33 @@
 #splash {
   background-image: url("../images/splash.jpg");
-  background-size: 100%;
   background-repeat: no-repeat;
-}
-
-#logo, #objective {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-#logo {
-  float: left;
-  text-align: right;
-}
-
 #objective {
-  float: right;
-  text-align: left;
+  max-width: 300px;
 }
 
 #objective p {
   max-width: 300px;
   font: 22px 'DM Serif Display', Georgia, Helvetica;
   font-style: italic;
-  padding-top: 45px;
-  margin-left: -10px;
+  padding-left: 20px;
+}
+
+@media only screen and (min-width: 600px) {
+
+  #splash {
+    background-size: 100%;
+  }
+
+  #objective p {
+    padding-top: 25px;
+    margin-left: -30px;
+  }
+}
+
+#objective {
+  text-align: left;
 }

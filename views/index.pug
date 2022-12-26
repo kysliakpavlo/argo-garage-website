@@ -4,20 +4,20 @@ block styles
    link(rel='stylesheet', href='/stylesheets/home.css')
 
 block content
-  #splash.columns.double
-    #logo.column1
+  #splash
+    #logo.inline
         img(src='/images/banner.png' alt='')#objective    
-    #objective.column2    
+    #objective.inline
         p.
           If you have been to a wedding, concert, or a good party and wanted all
           the photos? Argonovo lets you share photos instantly with those around you.
-  #blurbs.columns.single 
-    #store.column1    
-        img(class='rounded' src='/images/ss01.png' alt='Screenshot 1') 
-        img(class='rounded' src='/images/ss02.png' alt='Screenshot 2')
-        img(class='rounded' src='/images/ss03.png' alt='Screenshot 3')
-        br 
-        a(href='https://play.google.com/store/apps/details?id=com.argonovo.h')
-          img(class='rounded' src='/images/google.png' alt='Android Store')
-        a(href='https://apps.apple.com/us/app/argonovo/id1627814702')
-          img(class='rounded' src='/images/apple.png' alt='Apple Store')
+  #blurbs
+    #store  
+      img(class='rounded' src='/images/ss01.png' alt='Screenshot 1') 
+      img(class='rounded' src='/images/ss02.png' alt='Screenshot 2')
+      img(class='rounded' src='/images/ss03.png' alt='Screenshot 3')
+      br 
+      a(href='https://play.google.com/store/apps/details?id=com.argonovo.h')
+        img(class='rounded' src='/images/google.png' alt='Android Store')
+      a(href='https://apps.apple.com/us/app/argonovo/id1627814702')
+        img(class='rounded' src='/images/apple.png' alt='Apple Store')

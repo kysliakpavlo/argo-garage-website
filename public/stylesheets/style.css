@@ -99,6 +99,27 @@ body {
 }
 
 .rounded {
-  padding: 5px;
+  padding: 10px 5px 0px 5px;
   border-radius: 20px;
+}
+
+.boxbig {
+  height: 640px;
+  width: 640px;
+  object-fit: scale-down;
+  object-position: center top;
+}
+
+.boxthumb {
+  height: 200px;
+  width: 200px;
+  object-fit: scale-down;
+  object-position: center top;
+}
+
+.boxicon {
+  height: 100px;
+  width: 100px;
+  object-fit: scale-down;
+  object-position: center top;
 }
