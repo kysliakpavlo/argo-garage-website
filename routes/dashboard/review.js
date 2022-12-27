@@ -4,7 +4,7 @@ const db = require('../../db');
 const router = new Router();
 
 router.get('/', async (req, res) => {
-  const endpointURL = 'https://6fup2zzx27dmctf34en2bnn4om0vrrqa.lambda-url.us-east-1.on.aws/image/';
+  const endpointURL = 'https://4sz7bsq7y7nzg66fxeyvhn5xe40gxyiw.lambda-url.us-east-1.on.aws/image/';
   const queryTxtA = `SELECT id,image_id,camera_orientation,device_type,blocked,hidden,filtered FROM media `;
   const queryTxtB = [
     `WHERE processed_manually=FALSE AND content_type='image' AND (blocked=TRUE OR filtered=TRUE) `,
