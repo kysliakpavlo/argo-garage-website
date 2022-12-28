@@ -7,11 +7,17 @@
 body {
   color: #FFFFFF;
   background: #273746;    
+  min-width: 400px;
 }
 
 #wrapper {
   font: 18px 'DM Serif Text', Georgia, Helvetica;
   text-align: center;
+}
+
+#wrapper h1 {
+  font-size: 22px;;
+  font-style: italic;
 }
 
 #header {

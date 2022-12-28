@@ -31,3 +31,15 @@
 #objective {
   text-align: left;
 }
+
+.odd, .even {
+  padding: 50px 100px 50px 100px;
+}
+
+.odd {
+  background: #f8f8f8;
+}
+
+.even {
+  background: #ffffff;
+}
