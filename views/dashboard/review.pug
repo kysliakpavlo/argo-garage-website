@@ -33,7 +33,7 @@ block dashboard
           td j 
           td Done      
     .inline
-      img.boxbig(src=renderImageURL, class=[renderOrientation0,renderVisual])
+      img.boxbig(src=renderImageURL+'image/'+renderImageID, class=[renderOrientation0,renderVisual])
     .inline
       table
         tr
@@ -55,21 +55,26 @@ block dashboard
           td Orientation 
           td #{renderOrientation}
         tr 
-          td Original 
+          td Icon 
           td
-            img.boxicon(src=renderImageURL)       
+            img.boxicon(src=renderImageURL+'icon/'+renderImageID)       
   #orientation
+    P Thumbnail
     .inline
-      p 1
+      p 0°
       p
-        img.boxthumb(src=renderImageURL, class=renderOrientation1)
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID)
     .inline
-      p 2
+      p 90°
       p
-        img.boxthumb(src=renderImageURL, class=renderOrientation2)
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation1)
     .inline
-      p 3
+      p 180°
       p
-        img.boxthumb(src=renderImageURL, class=renderOrientation3)
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation2)
+    .inline
+      p 270°
+      p
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation3)
   #moderation 
     pre #{renderJSONdata}
