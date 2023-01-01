@@ -21,17 +21,17 @@ block dashboard
           td f 
           td Filter
         tr
-          td 1 
-          td 90°
-        tr
-          td 2 
-          td 180°
-        tr
-          td 3 
-          td 270°
-        tr
           td u 
           td portraitUp
+        tr
+          td d 
+          td portraitDown
+        tr
+          td r 
+          td landscapeRight
+        tr
+          td l 
+          td landscapeLeft
         tr
           td j 
           td Done      
@@ -60,23 +60,23 @@ block dashboard
         tr 
           td Icon 
           td
-            img.boxicon(src=renderImageURL+'icon/'+renderImageID)       
+            img.boxicon(src=renderImageURL+'icon/'+renderImageID, class=[renderOrientation0])       
   #orientation
     P Thumbnail
     .inline
-      p 0°
+      p portraitUp
       p
         img.boxthumb(src=renderImageURL+'thumb/'+renderImageID)
     .inline
-      p 1=90°
+      p landscapeLeft
       p
         img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class="rotate90")
     .inline
-      p 2=180°
+      p portraitDown
       p
         img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class="rotate180")
     .inline
-      p 3=270°
+      p landscapeRight
       p
         img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class="rotate270")
   #moderation 

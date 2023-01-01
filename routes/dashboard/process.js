@@ -7,8 +7,8 @@ const lambda = new AWS.Lambda({region: 'us-east-1'});
 
 router.get('/', async (req, res) => {
     var baseURL = req.baseUrl;
-    var row_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[bcf123uj])/g)[0];
-    var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[bcf123uj]/g)[0];
+    var row_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[bcfudrlj])/g)[0];
+    var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[bcfudrlj]/g)[0];
     
     queryTxt = `
         SELECT image_id
@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
                     filtered=TRUE
                 WHERE id=`+row_id;
             break;
-        case '1':
+/*        case '1':
             queryTxt = `
                 UPDATE media
                 SET
@@ -82,11 +82,33 @@ router.get('/', async (req, res) => {
             };
             await lambda.invoke(params).promise();
             break;
+*/
         case 'u':
             queryTxt = `
                 UPDATE media
                 SET
                     camera_orientation='portraitUp'
+                WHERE id=`+row_id;
+            break;
+        case 'd':
+            queryTxt = `
+                UPDATE media
+                SET
+                    camera_orientation='portraitDown'
+                WHERE id=`+row_id;
+            break;
+        case 'r':
+            queryTxt = `
+                UPDATE media
+                SET
+                    camera_orientation='landscapeRight'
+                WHERE id=`+row_id;
+            break;
+        case 'l':
+            queryTxt = `
+                UPDATE media
+                SET
+                    camera_orientation='landscapeLeft'
                 WHERE id=`+row_id;
             break;
         case 'j':
