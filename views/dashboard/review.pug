@@ -30,6 +30,9 @@ block dashboard
           td 3 
           td 270°
         tr
+          td u 
+          td portraitUp
+        tr
           td j 
           td Done      
     .inline
@@ -65,16 +68,16 @@ block dashboard
       p
         img.boxthumb(src=renderImageURL+'thumb/'+renderImageID)
     .inline
-      p 90°
+      p 1=90°
       p
-        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation1)
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class="rotate90")
     .inline
-      p 180°
+      p 2=180°
       p
-        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation2)
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class="rotate180")
     .inline
-      p 270°
+      p 3=270°
       p
-        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation3)
+        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class="rotate270")
   #moderation 
     pre #{renderJSONdata}
