@@ -2,20 +2,41 @@ const Router = require('express-promise-router');
 const util = require('util');
 const db = require('../../db');
 const router = new Router();
-const AWS = require('aws-sdk');
-const lambda = new AWS.Lambda({region: 'us-east-1'});
+
+function updateOrientation(currentOrientation,indexShift) {
+    const orientations = ['portraitUp','landscapeRight','landscapeLeft','portraitDown'];
+    var currentOrientationIndex = 0
+
+    switch(currentOrientation) {
+        case 'landscapeRight':
+            currentOrientationIndex = 1;
+            break;
+        case 'landscapeLeft':
+            currentOrientationIndex = 2;
+            break;
+        case 'portraitDown':
+            currentOrientationIndex = 3;
+            break;            
+    }
+
+    var updatedOrientationIndex = (currentOrientationIndex + indexShift) % 4;
+    var updatedOrientation = orientations[updatedOrientationIndex];
+    
+    return updatedOrientation;
+}
 
 router.get('/', async (req, res) => {
     var baseURL = req.baseUrl;
-    var row_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[bcfudrlj])/g)[0];
-    var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[bcfudrlj]/g)[0];
+    var row_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[bcf123j])/g)[0];
+    var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[bcf123j]/g)[0];
     
     queryTxt = `
-        SELECT image_id
+        SELECT camera_orientation
         FROM media
         WHERE id=`+row_id;
     const { rows } = await db.query(queryTxt);
-    var image_id = rows[0]['image_id'];
+    var camera_orientation = rows[0]['camera_orientation'];
+    var newOrientation = camera_orientation;
 
     switch(mod) {
         case 'b':
@@ -40,75 +61,34 @@ router.get('/', async (req, res) => {
                     filtered=TRUE
                 WHERE id=`+row_id;
             break;
-/*        case '1':
+        case '1':
+            newOrientation = updateOrientation(camera_orientation,1);
             queryTxt = `
                 UPDATE media
                 SET
                     processed_manually=false,
                     processed_amazon=false,
-                    camera_orientation='portraitUp'
+                    camera_orientation=`+newOrientation+`
                 WHERE id=`+row_id;
-            var params = {
-                FunctionName: "argo-garage-orient-dev",
-                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","img_dst":"images/'+image_id+'","rotation": "90"}'
-            };
-            await lambda.invoke(params).promise();
             break;
-        case '2':            
+        case '2':
+            newOrientatoin = updateOrientation(camera_orientation,2);
             queryTxt = `
                 UPDATE media
                 SET
                     processed_manually=false,
                     processed_amazon=false,
-                    camera_orientation='portraitUp'
+                    camera_orientation=`+newOrientation+`
                 WHERE id=`+row_id;
-            var params = {
-                FunctionName: "argo-garage-orient-dev",
-                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","img_dst":"images/'+image_id+'","rotation": "180"}'
-            };
-            await lambda.invoke(params).promise();
             break;        
-        case '3':           
+        case '3':
+            newOrientatoin = updateOrientation(camera_orientation,3);
             queryTxt = `
                 UPDATE media
                 SET
                     processed_manually=false,
                     processed_amazon=false,
-                    camera_orientation='portraitUp'
-                WHERE id=`+row_id;
-            var params = {
-                FunctionName: "argo-garage-orient-dev",
-                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","img_dst":"images/'+image_id+'","rotation": "270"}'
-            };
-            await lambda.invoke(params).promise();
-            break;
-*/
-        case 'u':
-            queryTxt = `
-                UPDATE media
-                SET
-                    camera_orientation='portraitUp'
-                WHERE id=`+row_id;
-            break;
-        case 'd':
-            queryTxt = `
-                UPDATE media
-                SET
-                    camera_orientation='portraitDown'
-                WHERE id=`+row_id;
-            break;
-        case 'r':
-            queryTxt = `
-                UPDATE media
-                SET
-                    camera_orientation='landscapeRight'
-                WHERE id=`+row_id;
-            break;
-        case 'l':
-            queryTxt = `
-                UPDATE media
-                SET
-                    camera_orientation='landscapeLeft'
+                    camera_orientation=`+newOrientation+`
                 WHERE id=`+row_id;
             break;
         case 'j':

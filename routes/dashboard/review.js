@@ -6,32 +6,32 @@ const router = new Router();
 
 router.get('/', async (req, res) => {
   const endpointURL = 'https://rvfewintfuw3vsvscx4wtyupai0eyerk.lambda-url.us-east-1.on.aws/';
-  const queryTxtA = `SELECT id,image_id,camera_orientation,device_type,blocked,hidden,filtered FROM media `;
-  const queryTxtB = [
-    `WHERE processed_manually=FALSE AND content_type='image' AND (blocked=TRUE OR filtered=TRUE) `,
-    `WHERE processed_manually=FALSE AND content_type='image' AND (blocked=TRUE OR filtered=TRUE) `,
-    `WHERE processed_manually=FALSE AND content_type='image' `
-  ];
-  const queryTxtC = [
-    `ORDER BY blocked DESC,filtered DESC,upload_time DESC LIMIT 1`,
-    `ORDER BY upload_time ASC LIMIT 1`,
-    `ORDER BY upload_time ASC LIMIT 1`
-  ];
-
+  const queryTxt = `
+    SELECT
+      id,
+      image_id,
+      camera_orientation,
+      device_type,
+      blocked,
+      hidden,
+      filtered
+    FROM media
+    WHERE
+      processed_manually=FALSE AND
+      content_type='image'
+    ORDER BY
+      blocked DESC,
+      filtered DESC,
+      upload_time ASC
+    LIMIT 1
+  `;
+  
   var renderRoute = 'dashboard/done';
   var renderParams = {
     title: 'Argonovo'
   };
       
-  var baseURL = req.baseUrl;
-  var process_id = baseURL.match(/(?<=\/review\/)[012]/g);  
-  if ( (process_id != null) && Array.isArray(process_id) && !Number.isNaN(process_id[0])) {
-    process_id = process_id[0];
-  } else {
-    process_id = '0';
-  }
-
-  const { rows } = await db.query(queryTxtA+queryTxtB[process_id]+queryTxtC[process_id]);
+  const { rows } = await db.query(queryTxt);
   if (rows.length == 1) {  
 
     var row_id = rows[0]['id'];
@@ -41,8 +41,6 @@ router.get('/', async (req, res) => {
     var filtered = rows[0]['filtered'];
     var hidden = rows[0]['hidden'];
     var camera_orientation = rows[0]['camera_orientation'];
-
-    console.log(camera_orientation);
     
     // Default values for portraitUp
     var camera_orientation0 = '';
