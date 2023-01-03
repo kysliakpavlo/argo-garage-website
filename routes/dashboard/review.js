@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
     FROM media
     WHERE
       processed_manually=FALSE AND
+      processed_amazon=TRUE AND
       content_type='image'
     ORDER BY
       blocked DESC,

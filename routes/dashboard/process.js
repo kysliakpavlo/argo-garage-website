@@ -68,7 +68,7 @@ router.get('/', async (req, res) => {
                 SET
                     processed_manually=false,
                     processed_amazon=false,
-                    camera_orientation=`+newOrientation+`
+                    camera_orientation='`+newOrientation+`'
                 WHERE id=`+row_id;
             break;
         case '2':
@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
                 SET
                     processed_manually=false,
                     processed_amazon=false,
-                    camera_orientation=`+newOrientation+`
+                    camera_orientation='`+newOrientation+`'
                 WHERE id=`+row_id;
             break;        
         case '3':
@@ -88,7 +88,7 @@ router.get('/', async (req, res) => {
                 SET
                     processed_manually=false,
                     processed_amazon=false,
-                    camera_orientation=`+newOrientation+`
+                    camera_orientation='`+newOrientation+`'
                 WHERE id=`+row_id;
             break;
         case 'j':
