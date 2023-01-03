@@ -72,7 +72,7 @@ router.get('/', async (req, res) => {
                 WHERE id=`+row_id;
             break;
         case '2':
-            newOrientatoin = updateOrientation(camera_orientation,2);
+            newOrientation = updateOrientation(camera_orientation,2);
             queryTxt = `
                 UPDATE media
                 SET
@@ -82,7 +82,7 @@ router.get('/', async (req, res) => {
                 WHERE id=`+row_id;
             break;        
         case '3':
-            newOrientatoin = updateOrientation(camera_orientation,3);
+            newOrientation = updateOrientation(camera_orientation,3);
             queryTxt = `
                 UPDATE media
                 SET
