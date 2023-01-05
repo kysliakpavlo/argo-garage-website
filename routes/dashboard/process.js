@@ -2,28 +2,8 @@ const Router = require('express-promise-router');
 const util = require('util');
 const db = require('../../db');
 const router = new Router();
-
-function updateOrientation(currentOrientation,indexShift) {
-    const orientations = ['portraitUp','landscapeRight','landscapeLeft','portraitDown'];
-    var currentOrientationIndex = 0
-
-    switch(currentOrientation) {
-        case 'landscapeRight':
-            currentOrientationIndex = 1;
-            break;
-        case 'landscapeLeft':
-            currentOrientationIndex = 2;
-            break;
-        case 'portraitDown':
-            currentOrientationIndex = 3;
-            break;            
-    }
-
-    var updatedOrientationIndex = (currentOrientationIndex + indexShift) % 4;
-    var updatedOrientation = orientations[updatedOrientationIndex];
-    
-    return updatedOrientation;
-}
+const AWS = require('aws-sdk');
+const lambda = new AWS.Lambda({region: 'us-east-1'});
 
 router.get('/', async (req, res) => {
     var baseURL = req.baseUrl;
@@ -31,12 +11,11 @@ router.get('/', async (req, res) => {
     var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[bcf123j]/g)[0];
     
     queryTxt = `
-        SELECT camera_orientation
+        SELECT image_id
         FROM media
-        WHERE id=`+row_id;
+        WHERE id=`+row_id+` LIMIT 1`;
     const { rows } = await db.query(queryTxt);
-    var camera_orientation = rows[0]['camera_orientation'];
-    var newOrientation = camera_orientation;
+    image_id = rows[0]['image_id'];
 
     switch(mod) {
         case 'b':
@@ -62,33 +41,54 @@ router.get('/', async (req, res) => {
                 WHERE id=`+row_id;
             break;
         case '1':
-            newOrientation = updateOrientation(camera_orientation,1);
+            var params = {
+                FunctionName: "argo-garage-orient-prod",
+                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","rotation": "1"}'
+            };
+            orient_response = await lambda.invoke(params).promise();
+            response = JSON.parse(orient_response.Payload);
+            strip_folder = response.body.Key.replace(/^images\//g,'');
+            image_id_new =  strip_folder.match(/[a-zA-Z0-9-_.]+.jpg$/g)[0];
             queryTxt = `
                 UPDATE media
                 SET
+                    image_id='`+image_id_new+`',
                     processed_manually=false,
-                    processed_amazon=false,
-                    camera_orientation='`+newOrientation+`'
+                    processed_amazon=false
                 WHERE id=`+row_id;
             break;
         case '2':
-            newOrientation = updateOrientation(camera_orientation,2);
+            var params = {
+                FunctionName: "argo-garage-orient-prod",
+                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","rotation": "2"}'
+            };
+            orient_response = await lambda.invoke(params).promise();
+            response = JSON.parse(orient_response.Payload);
+            strip_folder = response.body.Key.replace(/^images\//g,'');
+            image_id_new =  strip_folder.match(/[a-zA-Z0-9-_.]+.jpg$/g)[0];
             queryTxt = `
                 UPDATE media
                 SET
+                    image_id='`+image_id_new+`',
                     processed_manually=false,
-                    processed_amazon=false,
-                    camera_orientation='`+newOrientation+`'
+                    processed_amazon=false
                 WHERE id=`+row_id;
             break;        
         case '3':
-            newOrientation = updateOrientation(camera_orientation,3);
+            var params = {
+                FunctionName: "argo-garage-orient-prod",
+                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","rotation": "3"}'
+            };
+            orient_response = await lambda.invoke(params).promise();
+            response = JSON.parse(orient_response.Payload);
+            strip_folder = response.body.Key.replace(/^images\//g,'');
+            image_id_new =  strip_folder.match(/[a-zA-Z0-9-_.]+.jpg$/g)[0];
             queryTxt = `
                 UPDATE media
                 SET
+                    image_id='`+image_id_new+`',
                     processed_manually=false,
-                    processed_amazon=false,
-                    camera_orientation='`+newOrientation+`'
+                    processed_amazon=false
                 WHERE id=`+row_id;
             break;
         case 'j':

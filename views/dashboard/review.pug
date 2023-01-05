@@ -57,23 +57,19 @@ block dashboard
         tr 
           td Icon 
           td
-            img.boxicon.rotate0(src='renderImageURL'+'icon/'+renderImageID)       
+            img.boxicon.rotate0(src=renderImageURL+'icon/'+renderImageID)       
   #orientation
     P Thumbnail
     .inline
-      p 0° 1 portraitUp
-      p
-        img.boxthumb.rotate0(src=renderImageURL+'thumb/'+renderImageID)
-    .inline
-      p 90° 6 landscapeRight
+      p 1=90° CW
       p
         img.boxthumb.rotate90(src=renderImageURL+'thumb/'+renderImageID)
     .inline
-      p 180° 3 landscapeLeft
+      p 2=180° CW
       p
         img.boxthumb.rotate180(src=renderImageURL+'thumb/'+renderImageID)
     .inline
-      p 270° 8 portraitDown
+      p 3=270° CW
       p
         img.boxthumb.rotate270(src=renderImageURL+'thumb/'+renderImageID)
   #moderation 
