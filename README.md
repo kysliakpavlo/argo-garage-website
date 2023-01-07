@@ -83,4 +83,6 @@ RDS_PASSWORD=password
 ```
 npm install express-openid-connect
 ```
+# Startup
 
+$env:DEBUG='garage:*'; npm start  
