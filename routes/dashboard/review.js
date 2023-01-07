@@ -2,10 +2,11 @@ const Router = require('express-promise-router');
 const util = require('util');
 const db = require('../../db');
 const router = new Router();
+require('dotenv').config();
 
 
 router.get('/', async (req, res) => {
-  const endpointURL = 'https://rvfewintfuw3vsvscx4wtyupai0eyerk.lambda-url.us-east-1.on.aws/';
+  const endpointURL = process.env.IMAGES_ENDPOINT;
   const queryTxt = `
     SELECT
       id,
