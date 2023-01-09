@@ -4,7 +4,7 @@ const db = require('../../db');
 const router = new Router();
 
 router.get('/', async (req, res) => {
-  const endpointURL = 'https://rvfewintfuw3vsvscx4wtyupai0eyerk.lambda-url.us-east-1.on.aws/';
+  const endpointURL = process.env.IMAGES_ENDPOINT;
   const queryTxt = `
     SELECT
       id,

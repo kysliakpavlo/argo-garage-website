@@ -9,6 +9,8 @@ router.get('/', async (req, res) => {
     var baseURL = req.baseUrl;
     var row_id = baseURL.match(/(?<=\/process\/id\/)[0-9]+(?=\/mod\/[bcf123j])/g)[0];
     var mod = baseURL.match(/(?<=\/process\/id\/[0-9]+\/mod\/)[bcf123j]/g)[0];
+    const s3_bucket = process.env.IMAGES_BUCKET;
+    const lambda_orient = process.env.LAMBDA_ORIENT;
     
     queryTxt = `
         SELECT image_id
@@ -42,8 +44,8 @@ router.get('/', async (req, res) => {
             break;
         case '1':
             var params = {
-                FunctionName: "argo-garage-orient-prod",
-                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","rotation": "1"}'
+                FunctionName: lambda_orient,
+                Payload: '{"bucket":"'+s3_bucket+'","img_src":"images/'+image_id+'","rotation": "1"}'
             };
             orient_response = await lambda.invoke(params).promise();
             response = JSON.parse(orient_response.Payload);
@@ -59,8 +61,8 @@ router.get('/', async (req, res) => {
             break;
         case '2':
             var params = {
-                FunctionName: "argo-garage-orient-prod",
-                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","rotation": "2"}'
+                FunctionName: lambda_orient,
+                Payload: '{"bucket":"'+s3_bucket+'","img_src":"images/'+image_id+'","rotation": "2"}'
             };
             orient_response = await lambda.invoke(params).promise();
             response = JSON.parse(orient_response.Payload);
@@ -76,8 +78,8 @@ router.get('/', async (req, res) => {
             break;        
         case '3':
             var params = {
-                FunctionName: "argo-garage-orient-prod",
-                Payload: '{"bucket":"s3argoprod","img_src":"images/'+image_id+'","rotation": "3"}'
+                FunctionName: lambda_orient,
+                Payload: '{"bucket":"'+s3_bucket+'","img_src":"images/'+image_id+'","rotation": "3"}'
             };
             orient_response = await lambda.invoke(params).promise();
             response = JSON.parse(orient_response.Payload);
