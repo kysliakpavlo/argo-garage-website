@@ -56,8 +56,7 @@ router.get('/', async (req, res) => {
                 SET
                     image_id='`+image_id_new+`',
                     processed_manually=false,
-                    processed_amazon=false,
-                    camera_rotation='portraitUp'
+                    processed_amazon=false
                 WHERE id=`+row_id;
             break;
         case '2':
@@ -74,8 +73,7 @@ router.get('/', async (req, res) => {
                 SET
                     image_id='`+image_id_new+`',
                     processed_manually=false,
-                    processed_amazon=false,
-                    camera_rotation='portraitUp'
+                    processed_amazon=false
                 WHERE id=`+row_id;
             break;        
         case '3':
@@ -92,15 +90,15 @@ router.get('/', async (req, res) => {
                 SET
                     image_id='`+image_id_new+`',
                     processed_manually=false,
-                    processed_amazon=false,
-                    camera_rotation='portraitUp'
+                    processed_amazon=false
                 WHERE id=`+row_id;
             break;
         case 'j':
             queryTxt = `
                 UPDATE media
                 SET
-                    processed_manually=TRUE
+                    processed_manually=TRUE,
+                    camera_orientation='portraitUp'
                 WHERE id=`+row_id;
             break;
         default:
