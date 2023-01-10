@@ -97,8 +97,7 @@ router.get('/', async (req, res) => {
             queryTxt = `
                 UPDATE media
                 SET
-                    processed_manually=TRUE,
-                    camera_orientation='portraitUp'
+                    processed_manually=TRUE
                 WHERE id=`+row_id;
             break;
         default:
