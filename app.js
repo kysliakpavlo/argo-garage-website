@@ -18,10 +18,10 @@ app.use(
 	auth({
 		authRequired: false,
 		auth0Logout: true,
-		issuerBaseURL: process.env.ISSUER_BASE_URL,
-		baseURL: process.env.BASE_URL,
-		clientID: process.env.CLIENT_ID,
-		secret: process.env.SECRET
+		issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+		baseURL: process.env.AUTH0_BASE_URL,
+		clientID: process.env.AUTH0_CLIENT_ID,
+		secret: process.env.AUTH0_SECRET
 	})
 );
 
@@ -50,7 +50,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'production' ? err : {};
+  res.locals.error = req.app.get('env') === process.env.ENVIRONMENT ? err : {};
 
   // render the error page
   res.status(err.status || 500);
