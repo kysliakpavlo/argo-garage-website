@@ -14,7 +14,9 @@ router.get('/', async (req, res) => {
       device_type,
       blocked,
       hidden,
-      filtered
+      filtered,
+      location_latr,
+      location_lonr
     FROM media
     WHERE
       processed_manually=FALSE AND
@@ -42,6 +44,11 @@ router.get('/', async (req, res) => {
     var filtered = rows[0]['filtered'];
     var hidden = rows[0]['hidden'];
     var camera_orientation = rows[0]['camera_orientation'];
+    var lat = rows[0]['location_latr']*14.323944;  //  90 deg/(2*pi)
+    var lon = rows[0]['location_lonr']*28.647889;  // 180 deg/(2*pi)
+
+    console.log(lat);
+    console.log(lon);
 
     var camera_orientation0 = '';
     var camera_orientation1 = 'rotate90';
@@ -52,7 +59,7 @@ router.get('/', async (req, res) => {
       case 'landscapeLeft':
         camera_orientation0 = 'rotate270';
         camera_orientation1 = '';
-        camera_orientation2 = 'rotate90';
+        camera_orientation2 = 'rotate   90';
         camera_orientation3 = 'rotate180';
         break;
       case 'portraitDown':
