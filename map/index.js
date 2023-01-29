@@ -60,3 +60,7 @@ function sign(path, secret) {
   const hashedSignature = makeWebSafe(encodeBase64Hash(safeSecret, uri.path));
   return url.format(uri) + '&signature=' + hashedSignature;
 }
+
+module.exports = {
+  sign
+};

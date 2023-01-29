@@ -22,15 +22,6 @@ block dashboard
           td f 
           td Filter
         tr
-          td 1 
-          td 90° CW
-        tr
-          td 2 
-          td 180° CW
-        tr
-          td 3 
-          td 270° CW
-        tr
           td j 
           td Done      
     .inline
@@ -60,22 +51,12 @@ block dashboard
           td
             img.boxicon(src=renderImageURL+'icon/'+renderImageID, class=renderOrientation0)
         tr 
+          td Thumbnail 
+          td
+            img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation0)
+        tr 
           td Map 
           td
-            img(src='https://maps.googleapis.com/maps/api/staticmap?maptype=terrain&zoom=3&size=100x100&markers='+renderLat+','+renderLon+'&key=AIzaSyAUPGOWC4uw2isF9SaMK_lMARCGK2QLn30') 
-  #orientation
-    P Thumbnail
-    .inline
-      p 1=90° CW
-      p
-        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation1)
-    .inline
-      p 2=180° CW
-      p
-        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation2)
-    .inline
-      p 3=270° CW
-      p
-        img.boxthumb(src=renderImageURL+'thumb/'+renderImageID, class=renderOrientation3)
+            img(src='https://maps.googleapis.com'+renderMap)
   #moderation 
     pre #{renderJSONdata}

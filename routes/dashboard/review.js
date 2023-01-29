@@ -1,8 +1,10 @@
 const Router = require('express-promise-router');
 const util = require('util');
 const db = require('../../db');
+const map = require('../../map');
 const router = new Router();
-require('dotenv').config();
+
+console.log(map);
 
 router.get('/', async (req, res) => {
   const endpointURL = process.env.IMAGES_ENDPOINT;
@@ -47,32 +49,17 @@ router.get('/', async (req, res) => {
     var lat = rows[0]['location_latr']*57.295779;  // 360 deg/(2*pi)
     var lon = rows[0]['location_lonr']*57.295779;  // 360 deg/(2*pi)
 
-    console.log(lat);
-    console.log(lon);
-
     var camera_orientation0 = '';
-    var camera_orientation1 = 'rotate90';
-    var camera_orientation2 = 'rotate180';
-    var camera_orientation3 = 'rotate270';
 
     switch (camera_orientation) {
       case 'landscapeLeft':
         camera_orientation0 = 'rotate270';
-        camera_orientation1 = '';
-        camera_orientation2 = 'rotate   90';
-        camera_orientation3 = 'rotate180';
         break;
       case 'portraitDown':
         camera_orientation0 = 'rotate180';
-        camera_orientation1 = 'rotate270';
-        camera_orientation2 = '';
-        camera_orientation3 = 'rotate90';
         break;
       case 'landscapeRight':
         camera_orientation0 = 'rotate90';
-        camera_orientation1 = 'rotate180';
-        camera_orientation2 = 'rotate270';
-        camera_orientation3 = '';
         break;
     }
 
@@ -86,6 +73,12 @@ router.get('/', async (req, res) => {
       visualflag = 'visualflagblue';      
     }
 
+    var unsignedMapURL = '/maps/api/staticmap?'
+      +'maptype=terrain&zoom=3&size=100x100&'
+      +'markers='+lat+','+lon
+      +'&key=AIzaSyAUPGOWC4uw2isF9SaMK_lMARCGK2QLn30';
+    var signedMapURL = map.sign(unsignedMapURL, 'sC4spZuy3nXz0DcEaFEKL72lM58=');
+
     renderRoute = 'dashboard/review';
     renderParams = {
       title: 'Argonovo | Review',
@@ -94,16 +87,12 @@ router.get('/', async (req, res) => {
       renderImageURL: endpointURL,
       renderOrientation: camera_orientation,
       renderOrientation0: camera_orientation0,
-      renderOrientation1: camera_orientation1,
-      renderOrientation2: camera_orientation2,
-      renderOrientation3: camera_orientation3,
       renderJSONdata: JSON.stringify(device_type,null,2),
       renderBlocked: blocked,
       renderFiltered: filtered,
       renderHidden: hidden,
       renderVisual: visualflag,
-      renderLat: lat,
-      renderLon: lon
+      renderMap: signedMapURL
     };
   }
   

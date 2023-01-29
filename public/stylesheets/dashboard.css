@@ -10,16 +10,6 @@ table, th, td {
   margin: 20px 0 20px 0;
 }
 
-#orientation {
-  margin: 20px 0 20px 0;
-}
-
-#orientation div {
-  border: solid;
-  border-width: 1px;
-  border-color: #d7d7d7;
-}
-
 #moderation {
   background: #eeeeee;
   display: inline-block;
