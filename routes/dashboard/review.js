@@ -44,8 +44,8 @@ router.get('/', async (req, res) => {
     var filtered = rows[0]['filtered'];
     var hidden = rows[0]['hidden'];
     var camera_orientation = rows[0]['camera_orientation'];
-    var lat = rows[0]['location_latr']*14.323944;  //  90 deg/(2*pi)
-    var lon = rows[0]['location_lonr']*28.647889;  // 180 deg/(2*pi)
+    var lat = rows[0]['location_latr']*57.295779;  // 360 deg/(2*pi)
+    var lon = rows[0]['location_lonr']*57.295779;  // 360 deg/(2*pi)
 
     console.log(lat);
     console.log(lon);
@@ -101,7 +101,9 @@ router.get('/', async (req, res) => {
       renderBlocked: blocked,
       renderFiltered: filtered,
       renderHidden: hidden,
-      renderVisual: visualflag
+      renderVisual: visualflag,
+      renderLat: lat,
+      renderLon: lon
     };
   }
   

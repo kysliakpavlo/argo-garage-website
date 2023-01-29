@@ -62,7 +62,7 @@ block dashboard
         tr 
           td Map 
           td
-            img.boxicon(src=renderImageURL+'icon/'+renderImageID, class=renderOrientation0) 
+            img(src='https://maps.googleapis.com/maps/api/staticmap?maptype=terrain&zoom=3&size=100x100&markers='+renderLat+','+renderLon+'&key=AIzaSyAUPGOWC4uw2isF9SaMK_lMARCGK2QLn30') 
   #orientation
     P Thumbnail
     .inline
