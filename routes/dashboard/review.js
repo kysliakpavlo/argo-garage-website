@@ -4,8 +4,6 @@ const db = require('../../db');
 const map = require('../../map');
 const router = new Router();
 
-console.log(map);
-
 router.get('/', async (req, res) => {
   const endpointURL = process.env.IMAGES_ENDPOINT;
   const queryTxt = `
@@ -77,7 +75,7 @@ router.get('/', async (req, res) => {
       +'maptype=terrain&zoom=3&size=100x100&'
       +'markers='+lat+','+lon
       +'&key=AIzaSyAUPGOWC4uw2isF9SaMK_lMARCGK2QLn30';
-    var signedMapURL = map.sign(unsignedMapURL, 'sC4spZuy3nXz0DcEaFEKL72lM58=');
+    var signedMapURL = map.sign(unsignedMapURL, process.env.GMAP_SECRET);
 
     renderRoute = 'dashboard/review';
     renderParams = {
